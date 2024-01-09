@@ -1,0 +1,23 @@
+body {
+  background-color: aqua;
+}
+
+.special {
+  color: red;
+}
+
+.highlight {
+  background-color: yellow;
+}
+
+#mainMenu > li > a {
+  color: green;
+}
+
+li + li::before {
+  content: 'frate';
+}
+
+h1 + p {
+  color: green;
+}
