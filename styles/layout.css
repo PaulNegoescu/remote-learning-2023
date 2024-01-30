@@ -1,0 +1,68 @@
+html,
+body {
+  min-height: 100vh;
+  margin: 0;
+}
+
+body {
+  display: grid;
+  grid-template-columns: 1fr;
+  /* grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); */
+  /* grid-template-areas:
+    'cap cap cap'
+    'stanga principal dreapta'
+    'picioare picioare picioare'; */
+  grid-template-rows: auto 1fr auto;
+}
+
+@media (min-width: 700px) {
+  body {
+    grid-template-columns: 200px 1fr;
+  }
+}
+
+@media (min-width: 800px) {
+  body {
+    grid-template-columns: 200px 1fr 200px;
+  }
+}
+
+/* header {
+  grid-area: cap;
+}
+
+footer {
+  grid-area: picioare;
+} */
+
+header,
+footer {
+  grid-column: 1 / -1;
+}
+
+header {
+  background-color: orange;
+  display: flow-root;
+}
+
+footer {
+  background-color: purple;
+  display: flow-root;
+}
+
+aside {
+  background-color: greenyellow;
+  display: flow-root;
+}
+
+main {
+  background-color: hotpink;
+  display: flow-root;
+}
+
+@media print {
+  header,
+  footer {
+    display: none;
+  }
+}
