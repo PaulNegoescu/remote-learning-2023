@@ -174,7 +174,20 @@ const user = {
   calculateBmi() {
     return (this.weight / this.height ** 2).toFixed(2);
   },
+
+  get fullName() {
+    return `${this.fName} ${this.lName}`;
+  },
+
+  set fullName(val) {
+    const parts = val.split(' ');
+    this.fName = parts[0];
+    this.lName = parts[1];
+  },
 };
+
+user.fullName = 'IOana Test';
+console.log(user.fName);
 
 console.clear();
 
@@ -204,6 +217,8 @@ console.log(user.calculateBmi(), /*f1(),*/ f1 === user.calculateBmi);
  *    b. when using an arrow function the arrow function takes "this" like it would a normal
  *       variable from the scope the arrow function is declared in
  * 3. Constructor Functions
+ *    Can use this inside the function if we call the function preceded by the new keyword,
+ *    and it represents the instance that is being created
  */
 
 // function declaration
@@ -237,3 +252,127 @@ const returnObj = () => ({
 });
 
 console.log(add(2, 3));
+console.clear();
+
+const arrDummy = {
+  0: 'Paul',
+  1: 'Ceva',
+  2: 42,
+  'first-name': 'dasdsa',
+};
+
+const arr3 = [1, 2, 3, 'Paul;'];
+
+// console.log(arrDummy['first-name']);
+
+// for (const index in user) {
+//   console.log(index);
+// }
+
+const propName = 'first-name';
+
+// console.log(arrDummy[propName]);
+
+/**
+ * Constructor Functions
+ * OOP in JS
+ */
+
+function User(fName, lName, height, weight) {
+  this.fName = fName;
+  this.lName = lName;
+  this.height = height;
+  this.weight = weight;
+}
+
+User.prototype.calculateBmi = function () {
+  return (this.weight / this.height ** 2).toFixed(2);
+};
+
+User.prototype.sayHello = function () {
+  return 'Hi,';
+};
+
+User.prototype.toString = function () {
+  return this.fName + ' ' + this.lName;
+};
+
+User.prototype.type = 'visitor';
+
+const user1 = new User('Andreea', 'Popescu', 1.68, 59);
+const user2 = new User('Ion', 'Vasilescu', 1.88, 150);
+// console.log(user1.ssadsad());
+
+class Admin extends User {
+  type = 'admin';
+  #privataMea = 'asta e vizibila doar in clasa Admin';
+
+  static whatever() {
+    return 'this is a static method';
+  }
+
+  constructor(fName, lName, height, weight) {
+    super(fName, lName, height, weight);
+  }
+
+  get fullName() {
+    return `${this.fName} ${this.lName}`;
+  }
+
+  set fullName(val) {
+    const parts = val.split(' ');
+    this.fName = parts[0];
+    this.lName = parts[1];
+  }
+
+  sayHello() {
+    return `${super.sayHello()} ${this.fName} ${this.lName}` + this.#privataMea;
+  }
+}
+
+const admin = new Admin('Diana', 'Georgescu', 1.6, 60);
+
+console.dir(admin.fullName);
+admin.fName = 'Georgiana';
+console.dir(admin.fullName);
+admin.fullName = 'Ioana Barbulescu';
+console.dir(admin.sayHello());
+
+console.log(Admin.whatever());
+
+console.clear();
+
+/**
+ * Functions
+ */
+
+// Function Declaration
+function test1(param) {
+  return 'test 1' + param;
+}
+
+console.log(test1('Paul'));
+
+// Function Expression
+// a) staightforward
+const test2 = function (param) {
+  return 'test 2' + param;
+};
+
+console.log(test2('Paul'));
+
+// b) IIFE
+(function (param) {
+  console.log('test 3' + param);
+})('Paul');
+
+// c) Arrow Function
+const test4 = (param) => 'test 4' + param;
+
+console.log(test4('Paul'));
+
+// arguments
+// Callbacks
+// Rest/Default parameters
+// Spread operator
+//    Destructuring Assignment
