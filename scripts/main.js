@@ -372,7 +372,73 @@ const test4 = (param) => 'test 4' + param;
 console.log(test4('Paul'));
 
 // arguments
-// Callbacks
 // Rest/Default parameters
+function testArgs(a, b, c = 'Negoescu', ...orice) {
+  const o = {a, b, c, orice};
+  console.log(o);
+}
+testArgs('Paul', 'Ionut', 'Diana', 'fsdfsd', 'rwerwer');
+
+// Callbacks
+function doItPositive(a, b, cb) {
+  a = Math.abs(a);
+  b = Math.abs(b);
+  return cb(a, b);
+}
+
+function add(a, b) {
+  return a + b;
+}
+
+function multiply(a, b) {
+  return a * b;
+}
+
+console.log(doItPositive(5, -8, add), doItPositive(-7, 5, multiply));
+
+// Closures
+function parent(a) {
+  const b = 2;
+  function child (c) {
+    return a + b + c;
+  }
+  return child;
+}
+
+const ext1 = parent(3);
+const ext2 = parent(5);
+console.log(ext1(4), ext2(7));
+
+for(let i = 0; i < 5; i++) {
+  // setTimeout(() => {console.log(i)}, 0);
+} 
+for(let i = 0; i < 10000; i++) {
+  // console.log('p')
+}
+console.log('Paul');
+
+console.clear();
 // Spread operator
+function testSpread(a, b, c) {
+  return a + b + c;
+}
+const values = [3, 5, 7, 6, 10];
+const newValues = [1, 2, ...values, 4, 5];
+const newObj = {
+  prop: [1, 2, 3],
+};
+const newObj2 = {fName: 'altul', ...newObj};
+newObj2.prop[2] = 6;
+const newObj3 = structuredClone(newObj);
+newObj3.prop[1] = 6;
+
+console.log(testSpread(2, ...values), newValues, newObj, newObj2, newObj3);
+
+const testObj = {
+  newObj,
+  values,
+  prop: 1
+}
+console.log(testObj);
+
 //    Destructuring Assignment
