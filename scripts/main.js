@@ -408,6 +408,13 @@ function parent(a) {
 const ext1 = parent(3);
 const ext2 = parent(5);
 console.log(ext1(4), ext2(7));
+console.log( parent(10)(12) );
+
+function curriedAdd(a) {
+  return (b) => a + b;
+}
+
+console.log(curriedAdd(3)(5));
 
 for(let i = 0; i < 5; i++) {
   // setTimeout(() => {console.log(i)}, 0);
@@ -417,7 +424,7 @@ for(let i = 0; i < 10000; i++) {
 }
 console.log('Paul');
 
-console.clear();
+// console.clear();
 // Spread operator
 function testSpread(a, b, c) {
   return a + b + c;
@@ -440,5 +447,50 @@ const testObj = {
   prop: 1
 }
 console.log(testObj);
+console.clear();
 
-//    Destructuring Assignment
+// Destructuring Assignment
+const [unu, doi = 'Testt', , , ultimul, nu_exista = 'default value'] = values;
+let a = 15;
+let b = 'Paul';
+let z = 'Andrei';
+[a, b, z = 42] = [b, a];
+
+// const unu = values[0];
+// const doi = values.at(1);
+// const ultimul = values.at(-1);
+
+console.log({unu, doi, ultimul, a, b, nu_exista, z});
+
+const o = {
+  fName: 'Paul',
+  phoneNumbers: [
+    '0740000000',
+    '0268000001'
+  ],
+  details: {
+    age: 38,
+    height: 1.85,
+  },
+  nuExista: 'acum exista'
+};
+
+const {
+  fName: firstName, 
+  phoneNumbers: [,firstNumber], 
+  details: {height: personHeight},
+  nuExista = 'default'
+} = o;
+
+function destruct({details: {age = 32}, fName: firstName = 'Stefania'}) {
+  //let age = o.details.age;
+  console.log({age, firstName});
+}
+
+destruct(o);
+
+// const firstName = o.fName;
+// const secondNumber = o.phoneNumbers[1];
+console.log({firstName, firstNumber, personHeight, nuExista});
+
+// DOM
