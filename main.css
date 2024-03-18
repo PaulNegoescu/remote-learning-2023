@@ -1,0 +1,61 @@
+:root {
+    --primary-color: #A62B1F;
+    --primary-light-color: #D96941;
+    --secondary-color: #214001;
+    --secondary-light-color:  #2E5902;
+    --accent-color: #193C40;
+  }
+  
+  output {
+    font-size: 3rem;
+    margin-left: 2rem;
+  }
+  
+  div:has(> button) {
+    display: flex;
+    gap: 0.5rem;
+  }
+  
+  button {
+    --bg-color: var(--primary-light-color);
+    --border-color: var(--primary-color);
+    --text-color: color-mix(in srgb, var(--primary-color) 70%, #000 30%);
+  
+    padding: 0.5rem 1rem;
+  
+    background: var(--bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 3px;
+    color: var(--text-color);
+    cursor: pointer;
+  
+    &:hover {
+      --bg-color: color-mix(in srgb, var(--primary-light-color) 95%, #000 5%);
+    }
+  
+    &:active {
+      --bg-color: color-mix(in srgb, var(--primary-light-color) 80%, #000 20%);
+    }
+  }
+  
+  button.secondary {
+    --bg-color: var(--secondary-light-color);
+    --border-color: var(--secondary-color);
+    --text-color: #fff;
+  
+    &:hover {
+      --bg-color: color-mix(in srgb, var(--secondary-light-color) 95%, #fff 5%);
+    }
+  
+    &:active {
+      --bg-color: color-mix(in srgb, var(--secondary-light-color) 80%, #fff 20%);
+    }
+  }
+  
+  .positive {
+    color: #bada55;
+  }
+  
+  .negative {
+    color: var(--primary-color);
+  }
