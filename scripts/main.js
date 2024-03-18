@@ -11,7 +11,10 @@
 
   function handleClick(e) {
       // console.log(e);
-      e.target.closest('[data-counter-button=increment') ? count += 1 : count -= 1;
+      // console.log('e.target', e.target);
+      // console.log('e.target.dataset.counterButton', e.target.dataset.counterButton);
+      // e.target.closest('[data-counter-button=increment') ? count += 1 : count -= 1;
+      e.target.dataset.counterButton === 'increment' ? count += 1 : count -= 1;
       displayCount(count);
   }
 
